@@ -251,6 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be39e1ff6c27d456b92414d709986bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileColumns: 2
   tileRows: 2
+  tileColumns: 2
   surfaceTile: {fileID: 5368900833986962718, guid: 768d6de07ad67425fa2ebad5cdb9395b, type: 3}

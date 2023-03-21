@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] int tileColumns;
     [SerializeField] int tileRows;
+    [SerializeField] int tileColumns;
     [SerializeField] GameObject surfaceTile;
     [SerializeField] GameObject[,] tileMap;
 
-    private void LoadTileMap(int _cols=0, int _rows=0)
+    private void LoadTileMap(int _rows=0, int _cols=0)
     {
-        if ((_cols == 0) || (_rows == 0))
+        if ((_rows == 0) || (_cols == 0))
         {
             throw new System.Exception("Wrong tileMap size");
         }
 
         if (tileMap is not null)
         {
-            Tile[] _tileMap = FindObjectsOfType<Tile>();
-            for (int i = 0; i < _tileMap.Length; i++)
+            Tile[] _tile = FindObjectsOfType<Tile>();
+            for (int i = 0; i < _tile.Length; i++)
             {
-                Destroy(_tileMap[i].gameObject);
+                Destroy(_tile[i].gameObject);
             }
 
             System.Array.Clear(tileMap, 0, tileMap.Length);
@@ -33,7 +33,10 @@ public class GameController : MonoBehaviour
         {
             for (int j = 0; j < tileRows; j++)
             {
-                GameObject surfaceCube = Instantiate(surfaceTile, new Vector3(-1.5f * j, -1.5f * i, 0.0f), new Quaternion(0, 0, 0, 0));
+                GameObject surfaceCube = Instantiate(surfaceTile, new Vector3(1.5f * i, 1.5f * j, 0.0f), new Quaternion(0, 0, 0, 0), transform);
+                surfaceCube.GetComponent<Tile>().rowPos = j;
+                surfaceCube.GetComponent<Tile>().colPos = i;
+
                 tileMap[j, i] = surfaceCube;
             }
         }
@@ -41,7 +44,7 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        LoadTileMap(tileColumns, tileRows);
+        LoadTileMap(tileRows, tileColumns);
     }
 
     void Start()
@@ -53,7 +56,7 @@ public class GameController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            LoadTileMap(tileColumns, tileRows);
+            LoadTileMap(tileRows, tileColumns);
         }
     }
 }
