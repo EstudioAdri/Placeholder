@@ -6,8 +6,8 @@ public class GameController : MonoBehaviour
 {
     [SerializeField] int tileRows;
     [SerializeField] int tileColumns;
-    [SerializeField] GameObject surfaceTile;
     [SerializeField] GameObject[,] tileMap;
+    [SerializeField] GameObject surfaceTile;
 
     private void LoadTileMap(int _rows=0, int _cols=0)
     {
