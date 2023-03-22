@@ -48,7 +48,7 @@ public class TileController : MonoBehaviour
         {
             for (int j = 0; j < tileRows; j++)
             {
-                tileMap[j, i] = initTile(tileType.Capsule, j, i);
+                tileMap[j, i] = initTile(tileType.Cube, j, i);
             }
         }
     }
