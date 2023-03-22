@@ -9,7 +9,7 @@ public class TileController : MonoBehaviour
     [SerializeField] GameObject[,] tileMap;
     [SerializeField] List<GameObject> tilePrefabs;
 
-    public enum tileType { Cube, Sphere }
+    public enum tileType { Cube, Capsule }
 
     private GameObject initTile(tileType _tileType, int _rowPos, int _colPos)
     {
@@ -48,7 +48,7 @@ public class TileController : MonoBehaviour
         {
             for (int j = 0; j < tileRows; j++)
             {
-                tileMap[j, i] = initTile(tileType.Cube, j, i);
+                tileMap[j, i] = initTile(tileType.Capsule, j, i);
             }
         }
     }
