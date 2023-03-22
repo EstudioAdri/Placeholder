@@ -8,6 +8,7 @@ public class Tile : MonoBehaviour
     private MeshRenderer meshRenderer;
     private Color originalColor;
     private Color mouseOverColor = Color.red;
+    public string tileType;
     public int rowPos;
     public int colPos;
 
@@ -18,7 +19,6 @@ public class Tile : MonoBehaviour
         {
             meshRenderer.material.color = mouseOverColor;
         }
-        
     }
 
     private void OnMouseExit()
@@ -37,7 +37,7 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = transform.GetComponentInChildren<MeshRenderer>();
         originalColor = meshRenderer.material.color;
     }
 
