@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-    private bool mouseOver;
     [SerializeField] GameObject tileBuilding;
+    private MeshRenderer meshRenderer;
+    private Color originalColor;
+    private Color mouseOverColor = Color.red;
     public int rowPos;
     public int colPos;
 
     private void OnMouseOver()
     {
-        mouseOver = true;
+        //  Vector3[] _vertices = GetComponent<MeshFilter>().mesh.vertices;
+        if (meshRenderer.isVisible)
+        {
+            meshRenderer.material.color = mouseOverColor;
+        }
+        
     }
 
     private void OnMouseExit()
     {
-        mouseOver = false;
+        meshRenderer.material.color = originalColor;
     }
 
     private void OnMouseDown()
@@ -30,7 +37,8 @@ public class Tile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        meshRenderer = GetComponent<MeshRenderer>();
+        originalColor = meshRenderer.material.color;
     }
 
     // Update is called once per frame
